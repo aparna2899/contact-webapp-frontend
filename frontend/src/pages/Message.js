@@ -18,7 +18,7 @@ export default function Message(props) {
     const getMsgs = async () => {
       try {
         const res = await axios.get(
-          `https://contact-otp-app-backend.herokuapp.com/users/${contactName}`
+          process.env.REACT_APP_BASE_USER_URL + '/' + contactName
         );
         setAllMsg(res.data);
       } catch (error) {

@@ -6,7 +6,7 @@ export default function MessageDetail() {
   useEffect(() => {
     const getMsgs = async () => {
       try {
-        const res = await axios.get(`http://localhost:9000/users`);
+        const res = await axios.get(process.env.REACT_APP_BASE_USER_URL);
         setAllMsg(res.data);
       } catch (error) {
         console.log(error);

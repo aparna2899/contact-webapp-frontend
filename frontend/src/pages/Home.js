@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import data from '../data.json';
-import axios from 'axios';
 
 export default function Home() {
-  const [response, setResponse] = useState('');
-
-  useEffect(() => {
-    const getRes = async () => {
-      try {
-        let res = await axios.get('http://localhost:9000');
-        setResponse(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getRes();
-  }, []);
-
-  console.log(response);
-
   return (
     <div className=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <ul className="grid grid-cols-1 gap-6 my-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">

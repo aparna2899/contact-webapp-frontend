@@ -5,7 +5,7 @@ import { EnvelopeIcon } from '@heroicons/react/20/solid';
 export default function Message(props) {
   const person = props.location.state;
   const phone = person.phone;
-  const testphone = '+15005550006';
+  const testPhone = '+15005550006';
   const twilioPhone = '+14058776176';
   let contactName = `${person.firstName} ${person.lastName}`;
   const [msg, setMsg] = useState(
@@ -18,7 +18,7 @@ export default function Message(props) {
     const getMsgs = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:9000/users/${contactName}`
+          `https://contact-otp-app-backend.herokuapp.com/users/${contactName}`
         );
         setAllMsg(res.data);
       } catch (error) {
@@ -37,7 +37,7 @@ export default function Message(props) {
       try {
         axios({
           method: 'POST',
-          url: `http://localhost:9000/users`,
+          url: process.env.REACT_APP_BASE_USER_URL,
           headers: {
             'Content-Type': 'application/json',
           },
@@ -59,14 +59,14 @@ export default function Message(props) {
       try {
         axios({
           method: 'POST',
-          url: `http://localhost:9000/message`,
+          url: process.env.REACT_APP_BASE_MESSAGE_URL,
           headers: {
             'Content-Type': 'application/json',
           },
           data: JSON.stringify({
             message: {
               body: sentMsg,
-              from: testphone,
+              from: testPhone,
               to: phone,
             },
           }),

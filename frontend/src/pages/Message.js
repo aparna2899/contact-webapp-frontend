@@ -66,7 +66,7 @@ export default function Message(props) {
           data: JSON.stringify({
             message: {
               body: sentMsg,
-              from: testPhone,
+              from: twilioPhone,
               to: phone,
             },
           }),
